@@ -326,7 +326,7 @@ async function processWebhook({ msg, client }) {
    * ************************/
 
   var data_json = JSON.stringify(body);
-
+	console.log(data_json);
   await fetch(webhook, {
     method: "POST",
     body: data_json,
@@ -357,10 +357,9 @@ async function processWebhook({ msg, client }) {
             }
           }else if(response_type === 'menu'){
 
-            const buttons_reply_url = await new Buttons(itemResponse.content.title, itemResponse.content.button , itemResponse.content.body, itemResponse.content.footer);
-            console.log(buttons_reply_url);
+            const buttons_reply_url = await new Buttons(itemResponse.content.body, itemResponse.content.button , itemResponse.content.title, itemResponse.content.footer);
             await client.sendMessage(msg.from, buttons_reply_url);
-
+			console.log(buttons_reply_url);
 
             //await client.sendMessage(msg.from, itemResponse.content); // send message
 
