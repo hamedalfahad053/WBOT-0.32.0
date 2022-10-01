@@ -1,0 +1,51 @@
+{
+  "name": "wbot",
+  "version": "0.32.0",
+  "description": "A simple whatsapp reply bot using puppeteer.",
+  "main": "src/index.js",
+  "scripts": {
+    "app": "node src/index.js",
+    "pack": "pkg .",
+    "start": "node src/index.js"
+  },
+  "bin": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vasani-arpit/WBOT"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "automation"
+  ],
+  "private": true,
+  "pkg": {
+    "scripts": "src/**/*.js",
+    "targets": [
+      "node14-win",
+      "node14-linux",
+      "node14-macos"
+    ]
+  },
+  "author": "Arpit Vasani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vasani-arpit/WBOT/issues"
+  },
+  "homepage": "https://github.com/vasani-arpit/WBOT#readme",
+  "dependencies": {
+    "cli-progress": "^2.1.1",
+    "mel-spintax": "^1.0.4",
+    "mime": "^2.4.4",
+    "node-fetch": "^2.6.1",
+    "ora": "^3.0.0",
+    "puppeteer-core": "^13.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "semver": "^7.3.5",
+    "whatsapp-web.js": "github:pedroslopez/whatsapp-web.js#fix-buttons-list",
+    "yargs": "^13.2.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.6.0"
+  }
+}

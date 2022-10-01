@@ -1,0 +1,22 @@
+{
+    "appconfig": {
+        "headless": true,
+        "isGroupReply":false,
+        "webhook":"http://localhost/WhatsApp_Gateway.php",
+        "webhook_cron":"http://localhost/wbot/WhatsappCron",
+        "webhook_cron_update":"http://localhost/wbot/WhatsappCron/Update_Status_Cron/?cron_id=",
+        "webhook_qr":"http://localhost/WhatsApp_Gateway_QR.php",
+        "webhook_Status_loginBot":"http://localhost/wbot/Whatsapp_QR/Update_Status_login_Bot",
+        "webhook_Status_logoutBot":"http://localhost/wbot/Whatsapp_QR/Update_Status_logout_Bot",
+        "downloadMedia": true,
+        "replyUnreadMsg": true,
+        "CustomInjectionFolder": ""
+    },
+    "bot": [{}],
+    "blocked": [],
+    "noMatch":"{}",
+    "smartreply":{
+        "suggestions":[],
+        "clicktosend":true
+    }
+}
