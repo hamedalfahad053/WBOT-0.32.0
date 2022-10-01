@@ -403,12 +403,10 @@ async function send_cron(client) {
       "Content-Type": "application/json",
     },
   })
-    .then((resp_api) => resp_api.json())
+    .then((resp_api) => (resp_api !== null && resp_api !== undefined && resp_api !== '')? resp_api.json() : null)
     .then(function (response_api) {
-      console.log(response_api);
-      //console.log("result");
-
-      if (response_api && response_api.length > 0) {
+ 
+      if (response_api !== null && response_api !== undefined && response_api !== '' && response_api.length > 0) {
         response_api.forEach(async (itemResponse_api) => {
           // await client.sendSeen(itemResponse_api.send_to_user);
           await client.sendMessage(
@@ -471,4 +469,3 @@ Main();
 // await client.sendMessage('966556505152@c.us','كود تفعيل الحساب 123');
 // console.log(buttons_reply_url);
 // client.sendMessage('966556505152@c.us', buttons_reply_url);
-
