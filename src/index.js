@@ -326,7 +326,7 @@ async function processWebhook({ msg, client }) {
    * ************************/
 
   var data_json = JSON.stringify(body);
-	console.log(data_json);
+	//console.log(data_json);
   await fetch(webhook, {
     method: "POST",
     body: data_json,
@@ -348,18 +348,20 @@ async function processWebhook({ msg, client }) {
 
             await client.sendMessage(msg.from, itemResponse.text); // send message
 
-            if (itemResponse.files && itemResponse.files.length > 0) {
-
-              for (const itemFile of itemResponse.files) {
-                var mediaImage = await MessageMedia.fromUrl(itemFile);
-                await client.sendMessage(msg.from, mediaImage, { caption: "" });
+            if (itemResponse.file && itemResponse.file.length > 0) {
+				//console.log(itemResponse.files);
+              for (const itemFile of itemResponse.file) {
+				  //console.log(itemFile);
+                var mediaImage = await MessageMedia.fromUrl(itemFile.link, {filename: itemFile.name});
+				mediaImage.filename = itemFile.name;
+                await client.sendMessage(msg.from, mediaImage, { caption: itemFile.name });
               }
             }
           }else if(response_type === 'menu'){
 
-            const buttons_reply_url = await new Buttons((itemResponse.content.body !== null && itemResponse.content.body !== undefined && itemResponse.content.body !== '')? itemResponse.content.body : itemResponse.content.title, itemResponse.content.button , itemResponse.content.title, itemResponse.content.footer);
+            const buttons_reply_url = await new Buttons((itemResponse.content.body !== null && itemResponse.content.body !== undefined && itemResponse.content.body !== '')? itemResponse.content.body : itemResponse.content.title, itemResponse.content.button ,(itemResponse.content.body !== null || itemResponse.content.body !== undefined || itemResponse.content.body !== '')? '' : itemResponse.content.title, itemResponse.content.footer);
             await client.sendMessage(msg.from, buttons_reply_url);
-			console.log(buttons_reply_url);
+			//console.log(buttons_reply_url);
 
             //await client.sendMessage(msg.from, itemResponse.content); // send message
 
