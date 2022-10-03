@@ -359,7 +359,7 @@ async function processWebhook({ msg, client }) {
             }
           }else if(response_type === 'menu'){
 
-            const buttons_reply_url = await new Buttons((itemResponse.content.body !== null && itemResponse.content.body !== undefined && itemResponse.content.body !== '')? itemResponse.content.body : itemResponse.content.title, itemResponse.content.button ,(itemResponse.content.body !== null || itemResponse.content.body !== undefined || itemResponse.content.body !== '')? '' : itemResponse.content.title, itemResponse.content.footer);
+            const buttons_reply_url = await new Buttons((itemResponse.content.body !== null && itemResponse.content.body !== undefined && itemResponse.content.body !== '')? itemResponse.content.body : itemResponse.content.title, itemResponse.content.button ,((itemResponse.content.body !== null || itemResponse.content.body !== undefined || itemResponse.content.body !== '') && (itemResponse.content.title == '' || itemResponse.content.title == undefined || itemResponse.content.title == null))? '' : itemResponse.content.title, itemResponse.content.footer);
             await client.sendMessage(msg.from, buttons_reply_url);
 			//console.log(buttons_reply_url);
 
